@@ -50,6 +50,8 @@ void comer(int i){
 
 void *filosofo(void *i2){
 	int i =*((int *)i2);
+	int estomagototal = 1 + rand() %10;
+	int estomago = 0;
 	for(;;){
 		pensar(i);
 		int m1 = min(i, (i+1)%n);
