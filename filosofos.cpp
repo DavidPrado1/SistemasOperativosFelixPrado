@@ -61,6 +61,13 @@ void *filosofo(void *i2){
 		pthread_mutex_lock(&tenedores[m2]);
 		printf("Filosofo %d consiguio el tenedor izquierdo\n",i);
 		comer(i);
+		comida--;
+		estomago++;
+		if(estomago==estomagototal){
+			estomago--;
+			printf("Filosofo %d lleno, se puso a pensar, Estomago: %d/%d\n",i, estomago, estomagototal);
+		}
+		sleep(random() % 10);
 		pthread_mutex_unlock(&tenedores[i]);
 		pthread_mutex_unlock(&tenedores[(i+1)%n]);
 	}
