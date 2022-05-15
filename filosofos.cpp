@@ -39,15 +39,6 @@ int max(int num1, int num2){
 	return result;
 }
 
-void pensar(int i){
-	printf("Filosofo %d pensando.\n", i);
-	sleep(random() % 10);
-}
-
-void comer(int i){
-	printf("Filosofo %d comio y solto sus tenedores.\n", i);
-}
-
 void *filosofo(void *i2){
 	int i =*((int *)i2);
 	int estomagototal = 1 + rand() %10;
@@ -65,11 +56,11 @@ void *filosofo(void *i2){
 		restaurar();
 		comida--;
 		estomago++;
-		printf("Filosofo %d comio y cesa\n",i);
+		printf("Filosofo %d comio y cesa, Comida Total: %d, Estomago: %d/%d, Energia Gastada: %d\n",i, comida, estomago, estomagototal, energiagastada);
 		if(estomago==estomagototal){
 			energiagastada++;
 			estomago--;
-			printf("Filosofo %d lleno, se puso a pensar, Estomago: %d/%d\n",i, estomago, estomagototal);
+			printf("Filosofo %d lleno, se puso a pensar, Estomago: %d/%d, Energia Gastada: %d\n",i, estomago, estomagototal, energiagastada);
 		}
 		sleep(random() % 10);
 		pthread_mutex_unlock(&tenedores[i]);
