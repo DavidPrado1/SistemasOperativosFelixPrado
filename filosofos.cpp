@@ -62,9 +62,9 @@ void *filosofo(void *i2){
 			estomago--;
 			printf("Filosofo %d lleno, se puso a pensar, Estomago: %d/%d, Energia Gastada: %d\n",i, estomago, estomagototal, energiagastada);
 		}
-		sleep(random() % 10);
 		pthread_mutex_unlock(&tenedores[i]);
 		pthread_mutex_unlock(&tenedores[(i+1)%n]);
+		sleep(random() % 10);
 	}
 }
 
