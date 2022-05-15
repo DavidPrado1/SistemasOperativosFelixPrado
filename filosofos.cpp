@@ -8,12 +8,12 @@ int n;
 pthread_mutex_t tenedores[5];
 
 int comida = 1001;
-int cont = 0;
+int cnt = 0;
 
 void restaurar(){
 	if(comida==0){
 		comida = 1000;
-		cont++;
+		cnt++;
 	}
 }
 
