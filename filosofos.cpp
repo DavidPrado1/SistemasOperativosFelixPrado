@@ -52,18 +52,22 @@ void *filosofo(void *i2){
 	int i =*((int *)i2);
 	int estomagototal = 1 + rand() %10;
 	int estomago = 0;
+	printf("Filosofo %d pensando\n",i);
+	int energiagastada = 1;
+	sleep(random() % 10);
 	for(;;){
-		pensar(i);
 		int m1 = min(i, (i+1)%n);
 		int m2 = max(i, (i+1)%n);
 		pthread_mutex_lock(&tenedores[m1]);
 		printf("Filosofo %d consiguio el tenedor derecho\n",i);
 		pthread_mutex_lock(&tenedores[m2]);
 		printf("Filosofo %d consiguio el tenedor izquierdo\n",i);
-		comer(i);
+		restaurar();
 		comida--;
 		estomago++;
+		printf("Filosofo %d comio y cesa\n",i);
 		if(estomago==estomagototal){
+			energiagastada++;
 			estomago--;
 			printf("Filosofo %d lleno, se puso a pensar, Estomago: %d/%d\n",i, estomago, estomagototal);
 		}
